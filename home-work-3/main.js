@@ -10,10 +10,10 @@ var fruit = [
 
 function getKeyValue(arr, keyValue) {
   return arr.map(function (item) {
-      return item.name
+      return item[keyValue]
   });
 }
-console.log(getKeyValue(fruit));    // функция должна принимать вторым параметром "назнвание_ключа_объекта"
+console.log(getKeyValue(fruit, "name"));
 
 // 2
 var people = [
@@ -26,7 +26,10 @@ var people = [
 
 function getBooks(arr) {
     return arr.reduce(function (acc, person) {
-        acc.push(person.books);
+        let a = person["books"];
+        a.forEach(function (book) {
+            acc.push(book);
+        });
         return acc;
     }, []);
 }
