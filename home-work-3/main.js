@@ -26,12 +26,12 @@ var people = [
 
 function getBooks(arr) {
     return arr.reduce(function (acc, person) {
-        let a = person["books"];
-        a.forEach(function (book) {
-            acc.push(book);
+        person["books"].forEach(function (book) {
+            if (acc.indexOf(book) === -1) {
+                acc.push(book);
+            }
         });
         return acc;
     }, []);
 }
 console.log(getBooks(people));
-// сделать так, чтобы в массиве на выходе не было дубликатов
