@@ -98,9 +98,7 @@ for (let prop of students) {
     }
     var averageGrade = sumGrades / prop.grades.length;
 
-    console.log(averageGrade);
-
-    if (averageGrade < 3 && prop.gender === "male") {       // check age? 18 - 27
+    if (averageGrade < 3 && prop.gender === "male" && prop.age >= 18 && prop.age <= 27) {
         prop.isReadyForArmy= true;
         delete prop.grades;
         delete prop.course;
