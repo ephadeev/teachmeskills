@@ -1,45 +1,66 @@
-/*
-    <div id="container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Grades</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Bob</td>
-                    <td>18</td>
-                    <td>1,2,3,4</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Bob</td>
-                    <td>26</td>
-                    <td>5,2,3,4</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-*/
+var container = document.getElementById("container");
 
-// 2.
 var students = [
-    {id: "id", name: "Name", age: "Age", grades: "Grades"},
     {id: 1, name: "John", age: 20, grades: [2, 3, 4, 5, 2]},
     {id: 2, name: "Alex", age: 23, grades: [2, 3, 4, 3, 2]},
     {id: 3, name: "Bruce", age: 19, grades: [4, 3, 2, 5, 3]},
 ];
-// мы должны пробегаться по массиву с данными
 
-/* 3. Создаём тег <table> */
+var table = createElement("table");
+var tableHead = createElement("thead");
+var tableBody = createElement("tbody");
+var tableRow = createElement("tr");
+var tableData = createElement("td");
 
-/* 4. Создаём тег <thead> внутри thead создаём <tr>, а внутри tr -> <td> с текстом (см конечный результат)
-    'id', 'name' и тд */
+container.appendChild(table);
+table.appendChild(tableHead);
+table.appendChild(tableBody);
+tableHead.appendChild(tableRow);
 
-/* 5.  пробегаемся по массиву (шаг 2) и создаём <tr> внутри которых лежат соответствующие значения id, name и тд
-Не забываем про стили в файле css -- хотя бы border сделайте */
+var tableHeadContent = ["id", "Name", "Age", "Grades"];
+tableRow.append(...getListContent(tableHeadContent));
+
+tableBody.append(...addRows(students));
+
+function createElement(tag, text) {
+    var newElement = document.createElement(tag);
+    if (text) {
+        newElement.innerText = text;
+    }
+    return newElement;
+}
+
+function getListContent(arr) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        let tableHeader = createElement('th');
+        tableHeader.append(arr[i]);
+        result.push(tableHeader);
+    }
+    return result;
+}
+
+function addRows(arr) {
+    let row = [];
+    arr.forEach(function (student) {
+        let tableRow = createElement("tr");
+
+        let data = [];
+        Object.values(student).forEach(function (item) {
+           let tableData = createElement("td");
+           tableData.append(item);
+           data.push(tableData);
+        });
+        tableRow.append(...data);
+        row.push(tableRow);
+    });
+    return row;
+}
+
+function addContent(obj) {
+    let result = [];
+    for (let elem of obj) {
+
+    }
+    return result;
+}
