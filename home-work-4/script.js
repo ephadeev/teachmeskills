@@ -56,11 +56,3 @@ function addRows(arr) {
     });
     return row;
 }
-
-function addContent(obj) {
-    let result = [];
-    for (let elem of obj) {
-
-    }
-    return result;
-}
