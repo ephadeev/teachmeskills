@@ -1,10 +1,12 @@
-// 1. Написать цикл так, чтобы каждую итерацию выводило в консоль  значение i через секунду
-var j = 0;
-for (let i = 0; i < 5; i++) {
-    setTimeout(function () {
-        console.log(j);
-        j++;
-    }, 1000);
+// 1.
+var handler = function (i) {
+    return function() {
+        console.log(i);
+    }
+};
+
+for (var i = 0; i < 5; i++) {
+    setTimeout(handler(i), i * 1000);
 }
 
 // 2.
@@ -17,5 +19,4 @@ function f(time) {
     }, time);
     time += 1000;
 }
-
 f(time);
