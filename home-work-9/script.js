@@ -13,17 +13,17 @@ class User {
         return this.#name;
     }
 
-    /*setName(value) {
-        #name = value;
-    }*/
+    setName(value) {
+        this.#name = value;
+    }
 
     getPassword() {
         return this.#password;
     }
 
-    /*setPassword(value) {
-        #password = value;
-    }*/
+    setPassword(value) {
+        this.#password = value;
+    }
 
     sendMessage(msg) {
         console.log(msg)
