@@ -41,9 +41,9 @@ class SuperUser extends User {
         return SuperUser.createdUsers;
     }
 
-    createUser(name, pass) {
-        SuperUser.createdUsers.push(name);
-        return new User(name, pass);
+    createUser(userName, name, pass) {
+        const i = new User(name, pass);
+        return SuperUser.createdUsers.push(i);
     }
 }
 
@@ -77,9 +77,9 @@ user1.sendMessage("Привет");
 var superuser1 = new SuperUser("Evgeniy", `billmurray`);
 console.log(superuser1.getName()); // Evgeniy
 
-var user2 = superuser1.createUser("Max", "cooper");
+var maxCooper = superuser1.createUser("maxCooper", "Max", "10231023");
 console.log(superuser1.getCreatedUsers()); // ['Max']
-console.log(user2.getName()); // Max
+console.log(maxCooper.getName()); // Max
 
 var admin1 = new Admin("Petrosyan", "arnoldschwarcneger");
 console.log(admin1.getName()); // Petrosyan
